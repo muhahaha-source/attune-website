@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Binaural Beat Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0e0e11;
+      color: #eaeaf0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .panel {
+      background: #16161d;
+      padding: 24px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      margin-top: 12px;
+      opacity: 0.8;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #6a6aff;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button.stop {
+      background: #444;
+    }
+    .value {
+      font-size: 12px;
+      text-align: right;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Binaural Beat Generator</h1>
+
+    <label>Base Frequency (Hz)</label>
+    <input id="baseFreq" type="range" min="100" max="400" value="200" />
+    <div class="value" id="baseFreqVal">200 Hz</div>
+
+    <label>Beat Frequency (Hz)</label>
+    <input id="beatFreq" type="range" min="0.5" max="40" step="0.1" value="7" />
+    <div class="value" id="beatFreqVal">7 Hz</div>
+
+    <button id="preset528">528 Hz Solfeggio (Alpha)</button>
+    <button id="toggleBtn">Start</button>
+  </div>
+
+  <script>
+    let audioCtx;
+    let leftOsc, rightOsc, padOsc, padFilter;
+    let leftGain, rightGain;
+    let isPlaying = false;
+
+    const baseSlider = document.getElementById('baseFreq');
+    const beatSlider = document.getElementById('beatFreq');
+    const baseVal = document.getElementById('baseFreqVal');
+    const beatVal = document.getElementById('beatFreqVal');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    function updateDisplay() {
+      baseVal.textContent = `${baseSlider.value} Hz`;
+      beatVal.textContent = `${beatSlider.value} Hz`;
+    }
+
+    function startAudio() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      leftOsc = audioCtx.createOscillator();
+      rightOsc = audioCtx.createOscillator();
+
+      leftGain = audioCtx.createGain();
+      rightGain = audioCtx.createGain();
+
+      const leftPanner = audioCtx.createStereoPanner();
+      const rightPanner = audioCtx.createStereoPanner();
+
+      leftPanner.pan.value = -1;
+      rightPanner.pan.value = 1;
+
+      leftOsc.type = 'sine';
+      rightOsc.type = 'sine';
+
+      leftOsc.frequency.value = parseFloat(baseSlider.value);
+      rightOsc.frequency.value = parseFloat(baseSlider.value) + parseFloat(beatSlider.value);
+
+      leftOsc.connect(leftGain).connect(leftPanner).connect(audioCtx.destination);
+
+      // Ambient pad
+      padOsc = audioCtx.createOscillator();
+      padFilter = audioCtx.createBiquadFilter();
+      const padGain = audioCtx.createGain();
+
+      padOsc.type = 'sawtooth';
+      padOsc.frequency.value = parseFloat(baseSlider.value) / 2;
+
+      padFilter.type = 'lowpass';
+      padFilter.frequency.value = 800;
+      padFilter.Q.value = 0.6;
+
+      padGain.gain.value = 0.05;
+
+      padOsc.connect(padFilter).connect(padGain).connect(audioCtx.destination);
+
+      padOsc.start();
+      rightOsc.connect(rightGain).connect(rightPanner).connect(audioCtx.destination);
+
+      leftGain.gain.value = 0.2;
+      rightGain.gain.value = 0.2;
+
+      leftOsc.start();
+      rightOsc.start();
+
+      isPlaying = true;
+      toggleBtn.textContent = 'Stop';
+      toggleBtn.classList.add('stop');
+    }
+
+    function stopAudio() {
+      padOsc?.stop();
+      leftOsc.stop();
+      rightOsc.stop();
+      audioCtx.close();
+
+      isPlaying = false;
+      toggleBtn.textContent = 'Start';
+      toggleBtn.classList.remove('stop');
+    }
+
+    baseSlider.addEventListener('input', () => {
+      updateDisplay();
+      if (isPlaying) {
+        leftOsc.frequency.setValueAtTime(baseSlider.value, audioCtx.currentTime);
+        rightOsc.frequency.setValueAtTime(
+          parseFloat(baseSlider.value) + parseFloat(beatSlider.value),
+          audioCtx.currentTime
+        );
+      }
+    });
+
+    beatSlider.addEventListener('input', () => {
+      updateDisplay();
+      if (isPlaying) {
+        rightOsc.frequency.setValueAtTime(
+          parseFloat(baseSlider.value) + parseFloat(beatSlider.value),
+          audioCtx.currentTime
+        );
+      }
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      if (!isPlaying) startAudio();
+      else stopAudio();
+    });
+
+    updateDisplay();
+
+    document.getElementById('preset528').addEventListener('click', () => {
+      baseSlider.value = 528;
+      beatSlider.value = 10;
+      updateDisplay();
+
+      if (isPlaying) {
+        leftOsc.frequency.setValueAtTime(528, audioCtx.currentTime);
+        rightOsc.frequency.setValueAtTime(538, audioCtx.currentTime);
+        padOsc.frequency.setValueAtTime(264, audioCtx.currentTime);
+      }
+    });
+  </script>
+</body>
+</html>
