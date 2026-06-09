@@ -38,7 +38,7 @@
 <nav><a href="/" class="nav-logo">ATTUNE</a></nav>
 <div class="content">
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: June 3, 2026</p>
+  <p class="last-updated">Last updated: June 9, 2026</p>
 
   <p>Attune ("we", "our", "the app") is committed to protecting your privacy. This policy explains what information we process, how we use it, and your rights regarding your data.</p>
 
@@ -50,13 +50,20 @@
   <p><strong>Local data.</strong> Your preferences, favorites, saved custom sessions, and session history are stored locally on your device. This data is not transmitted to our servers. If you delete the app, this data may be removed from your device, though it may persist in device backups depending on your iOS backup settings.</p>
   <p><strong>Subscription and purchase data.</strong> If you subscribe to Attune Pro, your payment is processed by Apple through the App Store. We use RevenueCat to manage your subscription status. RevenueCat may process the following data: purchase and subscription entitlement data, an anonymous app user identifier, and receipt validation data. We do not have access to your payment details such as credit card numbers. For more information, see <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat's privacy policy</a>.</p>
   <p><strong>No audio or microphone access.</strong> Attune generates audio locally on your device. We do not access, record, or transmit any audio or microphone data.</p>
-  <p><strong>No third-party analytics.</strong> We do not currently use third-party analytics services. We do not track your behavior, collect device identifiers for analytics, or use advertising SDKs.</p>
+  <p><strong>Analytics and usage data.</strong> Attune uses Mixpanel to collect anonymous usage data to help us improve the app. This includes events such as onboarding completion, preset playback, and session duration. No personally identifiable information is collected — we do not track your name, email, IP address, or device identifiers. Analytics data collection requires your explicit consent on first launch and is disabled by default. You can opt in or out at any time via Settings → Share usage analytics. When opted out, no analytics data is collected or transmitted. For more information, see <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank">Mixpanel's privacy policy</a>.</p>
+
+  <h2>Analytics and Usage Data</h2>
+  <p>Attune collects anonymous usage data to improve the app experience. This data is collected via <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank">Mixpanel</a> and only when you have opted in.</p>
+  <p>Events we may collect include onboarding completion, preset playback, session duration, and general feature usage. We do not collect personally identifiable information — no name, email, IP address, or device identifiers are stored.</p>
+  <p>Analytics data collection requires explicit opt-in consent on first launch. You can opt out at any time via Settings → Share usage analytics. When opted out, no analytics data is collected or transmitted.</p>
+  <p>Analytics data is processed in the United States.</p>
 
   <h2>Legal Basis for Processing (GDPR)</h2>
   <p>For users in the EU/EEA, we process data on the following legal bases:</p>
   <ul>
     <li><strong>Contract performance:</strong> Processing subscription data is necessary to provide the Attune Pro service you purchased.</li>
     <li><strong>Legitimate interest:</strong> Processing minimal data to operate and maintain the app.</li>
+    <li><strong>Consent:</strong> Analytics data is processed only when you have explicitly opted in via the in-app consent prompt.</li>
   </ul>
 
   <h2>Data Sharing</h2>
@@ -64,20 +71,42 @@
   <ul>
     <li><strong>Apple</strong> — for payment processing and app distribution via the App Store.</li>
     <li><strong>RevenueCat</strong> — for subscription management, as described above.</li>
+    <li><strong>Mixpanel</strong> — for anonymous usage analytics, only when you have opted in.</li>
+    <li><strong>Supabase</strong> — for hosting visual assets (visualizer videos). No user data is stored on Supabase.</li>
+  </ul>
+
+  <h2>Third-Party Services</h2>
+  <p>Attune uses the following third-party services:</p>
+  <ul>
+    <li><strong>Mixpanel</strong> — anonymous analytics when you opt in. See <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank">Mixpanel's privacy policy</a>.</li>
+    <li><strong>RevenueCat</strong> — subscription management. See <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat's privacy policy</a>.</li>
+    <li><strong>Supabase</strong> — hosts app assets and configuration files. We do not store user personal data on Supabase. See <a href="https://supabase.com/privacy" target="_blank">Supabase's privacy policy</a>.</li>
+    <li><strong>Apple</strong> — in-app purchases via the App Store.</li>
   </ul>
 
   <h2>International Data Transfers</h2>
-  <p>Apple and RevenueCat are US-based companies and may process data outside of Sweden and the EU/EEA. These transfers are covered by the service providers' data processing agreements and appropriate safeguards such as Standard Contractual Clauses.</p>
+  <p>Apple, RevenueCat, Mixpanel, and Supabase are US-based companies and may process data outside of Sweden and the EU/EEA. These transfers are covered by the service providers' data processing agreements and appropriate safeguards such as Standard Contractual Clauses.</p>
 
   <h2>Data Retention</h2>
   <ul>
     <li><strong>Local data</strong> remains on your device until you delete it or uninstall the app.</li>
-    <li><strong>Subscription data</strong> is retained by Apple and RevenueCat as needed for subscription management, billing, and legal obligations.</li>
+    <li><strong>Analytics data</strong> is retained for 12 months, then automatically deleted.</li>
+    <li>Analytics data collected by Mixpanel is retained for a maximum of 12 months.</li>
+    <li><strong>Subscription data</strong> is managed by RevenueCat and Apple and retained as needed for subscription management, billing, and legal obligations.</li>
+    <li>We do not store user data on Attune's own servers.</li>
   </ul>
 
-  <h2>Your Rights</h2>
-  <p>If you are in the EU/EEA, you have the right to access, correct, or request deletion of your personal data, as well as the right to data portability and to object to or restrict processing. Since Attune processes minimal data and does not require an account, most personal data is under your direct control on your device.</p>
-  <p>For subscription-related data, you can manage your subscription directly through your Apple ID settings. For any other data requests, contact us at <a href="mailto:support@attunebinaural.com">support@attunebinaural.com</a>.</p>
+  <h2>Your Rights (GDPR)</h2>
+  <p>If you are in the EU/EEA, you have the following rights regarding your personal data:</p>
+  <p>You can withdraw your consent for analytics data collection at any time by disabling Share usage analytics in Settings.</p>
+  <ul>
+    <li><strong>Right to access:</strong> Contact us to request what data we hold about you.</li>
+    <li><strong>Right to deletion:</strong> Contact us to request removal of your data.</li>
+    <li><strong>Right to withdraw consent:</strong> Turn off analytics at any time in Settings → Share usage analytics.</li>
+    <li><strong>Right to data portability:</strong> Contact us to request a copy of your data.</li>
+  </ul>
+  <p>Since Attune does not require an account, most data on your device is under your direct control. For subscription-related data, you can manage your subscription directly through your Apple ID settings.</p>
+  <p>To exercise any of these rights, contact us at <a href="mailto:support@attunebinaural.com">support@attunebinaural.com</a>.</p>
 
   <h2>Children's Privacy</h2>
   <p>Attune is not directed at children. We do not knowingly collect personal information from minors. If you are under the age of consent in your jurisdiction, please use the app only with the approval and supervision of a parent or guardian.</p>
