@@ -1,6 +1,11 @@
 {
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" }
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/blog/what-are-binaural-beats", "destination": "/blog/what-are-binaural-beats.html" }
+  ],
+  "redirects": [
+    { "source": "/eula", "destination": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/", "permanent": false }
   ]
 }
