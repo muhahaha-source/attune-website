@@ -4,7 +4,8 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/blog/what-are-binaural-beats", "destination": "/blog/what-are-binaural-beats.html" },
-    { "source": "/blog/binaural-beats-for-focus", "destination": "/blog/binaural-beats-for-focus.html" }
+    { "source": "/blog/binaural-beats-for-focus", "destination": "/blog/binaural-beats-for-focus.html" },
+    { "source": "/blog/binaural-beats-for-sleep", "destination": "/blog/binaural-beats-for-sleep.html" }
   ],
   "redirects": [
     { "source": "/eula", "destination": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/", "permanent": false }
