@@ -5,6 +5,7 @@
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/blog/what-are-binaural-beats", "destination": "/blog/what-are-binaural-beats.html" },
     { "source": "/blog/binaural-beats-for-focus", "destination": "/blog/binaural-beats-for-focus.html" },
+    { "source": "/blog/alpha-waves-vs-theta-waves", "destination": "/blog/alpha-waves-vs-theta-waves.html" },
     { "source": "/blog/binaural-beats-for-sleep", "destination": "/blog/binaural-beats-for-sleep.html" }
   ],
   "redirects": [
