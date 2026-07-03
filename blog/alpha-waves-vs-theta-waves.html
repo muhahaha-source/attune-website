@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="CtUXdq0qznKbdmOyZF0UMYJb0yukfPlmz-KibDGH5yA">
@@ -76,6 +77,10 @@
   .footer-links a:hover { color: var(--text-secondary); }
   @media (max-width: 640px) { nav { padding: 16px 20px; } footer { flex-direction: column; text-align: center; } }
 </style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -235,5 +240,13 @@
   </div>
 </footer>
 
+<script type="importmap">
+{
+  "imports": {
+    "@vercel/analytics": "https://esm.sh/@vercel/analytics@1.5.0"
+  }
+}
+</script>
+<script type="module" src="/analytics.js"></script>
 </body>
 </html>
