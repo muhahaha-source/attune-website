@@ -9,7 +9,8 @@
     { "source": "/blog/binaural-beats-vs-isochronic-tones", "destination": "/blog/binaural-beats-vs-isochronic-tones.html" },
     { "source": "/blog/alpha-waves-vs-theta-waves", "destination": "/blog/alpha-waves-vs-theta-waves.html" },
     { "source": "/blog/binaural-beats-for-anxiety", "destination": "/blog/binaural-beats-for-anxiety.html" },
-    { "source": "/blog/binaural-beats-for-meditation", "destination": "/blog/binaural-beats-for-meditation.html" }
+    { "source": "/blog/binaural-beats-for-meditation", "destination": "/blog/binaural-beats-for-meditation.html" },
+    { "source": "/blog/binaural-beats-for-studying", "destination": "/blog/binaural-beats-for-studying.html" }
   ],
   "redirects": [
     { "source": "/eula", "destination": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/", "permanent": false }
