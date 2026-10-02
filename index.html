@@ -77,19 +77,19 @@ h3{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.025em;line-height:1.15}
 .nav-right{display:flex;align-items:center;gap:12px}
 
 /* ---------- hero ---------- */
-.hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:calc(68px + clamp(40px,7vh,88px)) var(--gutter) 0;overflow:hidden;isolation:isolate}
-.app-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);font-size:13.5px;color:var(--text-2);margin-bottom:26px}
-.app-badge img{width:26px;height:26px;border-radius:7px}
-.hero h1{font-size:clamp(48px,8.4vw,112px);letter-spacing:-.055em;line-height:.92;margin:0 0 22px}
-.hero .lede{margin:0 auto 32px;text-align:center}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-stage{--pw:clamp(230px,21vw,310px);position:relative;width:var(--pw);height:calc(var(--pw) * 2.0444 * .64);margin-top:clamp(44px,6vh,72px)}
-.hero > :not(.hero-stage){position:relative;z-index:2}
-.hero-glow{mix-blend-mode:screen;position:absolute;left:50%;top:calc(var(--pw) * 2.0444 * .42);width:calc(var(--pw) * 3.4);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero-inner{max-width:var(--maxw);margin:0 auto;padding:calc(68px + 16px) var(--gutter) 24px;min-height:min(100svh,960px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:clamp(24px,4vw,72px)}
+.hero-copy{position:relative;z-index:2}
+.hero h1{font-size:clamp(56px,7.4vw,112px);letter-spacing:-.055em;line-height:.9;margin:0 0 26px}
+.hero .lede{margin:0 0 36px;max-width:500px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stage{--ph:min(76svh,680px);position:relative;height:var(--ph);aspect-ratio:1350/2760;justify-self:center}
+.hero-glow{mix-blend-mode:screen;position:absolute;left:50%;top:42%;width:calc(var(--ph) * 1.6);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
 .hero-glow video{width:100%;height:100%}
-.hero-clip{position:relative;z-index:1;height:100%;overflow:hidden;-webkit-mask-image:linear-gradient(#000 58%,transparent);mask-image:linear-gradient(#000 58%,transparent)}
+.hero-clip{position:relative;z-index:1;height:100%}
+.hero-clip .phone{height:100%;width:auto}
 .hero-clip .phone .screen>*{opacity:1}
-.hero-note{margin-top:18px;font-size:13px;color:var(--text-3)}
+.hero-note{margin-top:20px;font-size:13px;color:var(--text-3)}
 .play-dot{width:8px;height:8px;border-radius:50%;background:var(--relax);box-shadow:0 0 12px var(--relax)}
 
 /* ---------- facts strip ---------- */
@@ -234,6 +234,13 @@ footer small{font-size:13px;color:var(--text-3)}
 }
 @media (max-width:900px){
   .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;min-height:0;text-align:center;padding-top:calc(68px + 40px);padding-bottom:0;gap:44px}
+  .hero .lede{margin:0 auto 32px}
+  .hero-ctas{justify-content:center;margin:0 auto}
+  .hero-stage{--ph:auto;width:240px;height:calc(240px * 2.0444 * .64);aspect-ratio:auto}
+  .hero-glow{top:calc(240px * 2.0444 * .42);width:780px}
+  .hero-clip{overflow:hidden;-webkit-mask-image:linear-gradient(#000 58%,transparent);mask-image:linear-gradient(#000 58%,transparent)}
+  .hero-clip .phone{height:auto;width:100%}
   .player{grid-template-columns:1fr}
   .controls{border-left:0;border-top:1px solid var(--line)}
   .stage{aspect-ratio:1/0.9}
@@ -252,7 +259,6 @@ footer small{font-size:13px;color:var(--text-3)}
   .cell{min-height:0}
   .hero-ctas .btn{width:100%;justify-content:center}
   .hero-ctas{width:100%;max-width:360px;flex-direction:column}
-  .hero-stage{--pw:240px}
   .layers{grid-template-columns:1fr 1fr}
   .mode{padding:12px}
   .mode .band .hz{display:none}
@@ -298,25 +304,28 @@ footer small{font-size:13px;color:var(--text-3)}
 
 <!-- HERO -->
 <section class="hero">
-  <a class="app-badge" href="https://apps.apple.com/app/id6779028328" data-cta="badge"><img src="assets/img/icon-180.png" alt="" width="26" height="26">Attune for iPhone</a>
-  <h1>Tune your mind.</h1>
-  <p class="lede">An iPhone app that layers binaural beats over handcrafted ambient music — for deep focus, easier sleep and calmer evenings.</p>
-  <div class="hero-ctas">
-    <a class="btn btn-primary" href="https://apps.apple.com/app/id6779028328" data-cta="hero"><svg><use href="#apple"/></svg>Download on the App Store</a>
-    <a class="btn btn-ghost" href="#listen" id="heroListen"><span class="play-dot"></span>Listen first</a>
-  </div>
-  <p class="hero-note">Free to try · No account needed</p>
-  <div class="hero-stage" aria-hidden="true">
-    <div class="hero-glow">
-      <video class="vis" autoplay muted loop playsinline preload="auto" poster="assets/vis/hero.jpg">
-        <source src="assets/vis/hero.webm" type="video/webm">
-        <source src="assets/vis/hero.mp4" type="video/mp4">
-      </video>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1>Tune your<br>mind.</h1>
+      <p class="lede">An iPhone app that layers binaural beats over handcrafted ambient music — for deep focus, easier sleep and calmer evenings.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://apps.apple.com/app/id6779028328" data-cta="hero"><svg><use href="#apple"/></svg>Download on the App Store</a>
+        <a class="btn btn-ghost" href="#listen" id="heroListen"><span class="play-dot"></span>Listen first</a>
+      </div>
+      <p class="hero-note">Free to try · No account needed</p>
     </div>
-    <div class="hero-clip">
-      <div class="phone">
-        <div class="screen"><video autoplay muted loop playsinline preload="auto" poster="assets/app/np-unwind.webp"><source src="assets/app/np-unwind.mp4" type="video/mp4"></video></div>
-        <img class="frame" src="assets/img/iphone-frame.webp" alt="">
+    <div class="hero-stage" aria-hidden="true">
+      <div class="hero-glow">
+        <video class="vis" autoplay muted loop playsinline preload="auto" poster="assets/vis/hero.jpg">
+          <source src="assets/vis/hero.webm" type="video/webm">
+          <source src="assets/vis/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-clip">
+        <div class="phone">
+          <div class="screen"><video autoplay muted loop playsinline preload="auto" poster="assets/app/np-unwind.webp"><source src="assets/app/np-unwind.mp4" type="video/mp4"></video></div>
+          <img class="frame" src="assets/img/iphone-frame.webp" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -429,7 +438,7 @@ footer small{font-size:13px;color:var(--text-3)}
         <article class="step" data-i="0">
           <span class="num">01</span>
           <h3>A visual that breathes with the sound.</h3>
-          <p>Every session gets its own live visualizer, rendered in real time on your iPhone. Leave it glowing on the nightstand, or let it fill the desk while you work.</p>
+          <p>Every soundscape comes with its own visualizer, shaped to the mood of the sound. Leave it glowing on the nightstand, or let it fill the desk while you work.</p>
           <div class="phone"><div class="screen"><video muted loop playsinline preload="none" poster="assets/app/np-daydream.webp"><source src="assets/app/np-daydream.mp4" type="video/mp4"></video></div><img class="frame" src="assets/img/iphone-frame.webp" alt=""></div>
         </article>
         <article class="step" data-i="1">
